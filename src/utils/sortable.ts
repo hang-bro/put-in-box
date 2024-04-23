@@ -21,10 +21,10 @@ const unSortOptions: Sortable.Options = {
   group: {
     name: 'name-unSort',
     pull: 'clone',
-    put: false // Do not allow items to be put into this list
+    put: false
   },
   animation: 150,
-  sort: false // To disable sorting: set sort to false
+  sort: false
 }
 
 type IOption = Sortable.Options
@@ -32,6 +32,7 @@ type IOption = Sortable.Options
 class SortableUtil {
   /**可自由移动 */
   static ShareSortabel(el: HTMLElement, options?: IOption) {
+    console.log(`el ==>`,el);
     return new Sortable(el, { ...shareOptions, ...options })
   }
 
