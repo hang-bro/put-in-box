@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './index.less'
-// Cherrypick extra plugins
-import Sortable,{Swap} from 'sortablejs'
-Sortable.mount(new Swap());
-
-import { Button } from 'antd'
+import SortableUtil from '@/utils/sortable'
 type IList = { value: number; id: string }
 export default function App() {
   const ref = useRef<HTMLElement & HTMLUListElement>(null)
@@ -21,18 +17,8 @@ export default function App() {
       .map(() => ({ value: Math.floor(Math.random() * 100), id: crypto.randomUUID() }))
   )
   useEffect(() => {
-    new Sortable(ref.current as HTMLElement, {
-      swap: true, // Enable swap plugin
-      swapClass: 'highlight', // The class applied to the hovered swap item
-      animation: 150
-    })
-    new Sortable(ref2.current as HTMLElement, {
-      animation: 150,
-      group: {
-        name: 'shared',
-        pull: 'clone' // To clone: set pull to 'clone'
-      }
-    })
+    SortableUtil.CloneSortable(ref.current as HTMLElement)
+    SortableUtil.CloneSortable(ref2.current as HTMLElement)
   }, [])
   return (
     <main className=" w-screen h-screen flex  items-center justify-center text-2xl">
