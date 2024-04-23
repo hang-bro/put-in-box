@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hang-bro/put-in-box/issues"
   },
-  "homepage": "https://github.com/hang-bro/put-in-box#readme"
+  "homepage": "https://github.com/hang-bro/put-in-box#readme",
+  "dependencies": {
+    "vite": "^5.2.10"
+  }
 }
