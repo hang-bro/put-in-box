@@ -1,12 +1,20 @@
 import SortableUtil from '@/utils/sortable'
 import { Drawer } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
-
+import './index.less'
+import useMouseScroll from '@/hooks/useMouseScroll'
 const App: React.FC = () => {
   const [open, setOpen] = useState(false)
   const ref = useRef<any>()
   useEffect(() => {
-    open && SortableUtil.ShareSortabel(ref.current as HTMLElement)
+    if (open) {
+      SortableUtil.ShareSortabel(ref.current as HTMLElement, {
+        onStart: e => {
+          setOpen(false)
+        }
+      })
+      useMouseScroll(ref.current.parentElement)
+    }
   }, [open])
   return (
     <>
@@ -14,9 +22,9 @@ const App: React.FC = () => {
         onClick={() => {
           setOpen(true)
         }}
-        className=" absolute bottom-0 bg-red-200 w-full text-center"
+        className=" cursor-pointer absolute bottom-0 bg-red-200 w-full text-center"
       >
-        this is drawer
+        open
       </section>
       <Drawer
         placement="bottom"
@@ -24,6 +32,7 @@ const App: React.FC = () => {
         open={open}
         height={200}
         onClose={() => setOpen(false)}
+        className="scroll1"
       >
         <ul ref={ref} className="h-full flex ">
           {Array(10)
@@ -32,7 +41,7 @@ const App: React.FC = () => {
               return (
                 <li
                   key={index}
-                  className=" bg-orange-300 flex items-center justify-center mr-2 h-full aspect-square border rounded-lg"
+                  className=" cursor-pointer bg-orange-300 flex items-center justify-center mr-2 h-full aspect-square border rounded-lg"
                 >
                   {index}
                 </li>

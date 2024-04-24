@@ -32,8 +32,10 @@ type IOption = Sortable.Options
 class SortableUtil {
   /**可自由移动 */
   static ShareSortabel(el: HTMLElement, options?: IOption) {
-    console.log(`el ==>`,el);
-    return new Sortable(el, { ...shareOptions, ...options })
+    return new Sortable(el, {
+      ...shareOptions,
+      ...options
+    })
   }
 
   /**可复制 */
@@ -49,10 +51,8 @@ class SortableUtil {
   /**handle */
   static HandleSortable(el: HTMLElement, options?: IOption) {
     return new Sortable(el, {
-      ...{
-        handle: '.handle', // handle's class
-        animation: 150
-      },
+      handle: '.handle', // handle's class
+      animation: 150,
       ...options
     })
   }

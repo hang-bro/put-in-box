@@ -1,0 +1,21 @@
+body {
+  cursor: url(../cursor/normal.cur), auto;
+  // font-family: 'YEFONT';
+}
+a {
+  cursor: url(../cursor/link.cur), auto;
+}
+.cursor-pointer {
+  cursor: url(../cursor/link.cur), auto;
+}
+button,
+input {
+  &:hover {
+    cursor: url(../cursor/link.cur), auto;
+  }
+}
+.no-scroll {
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+}
