@@ -48,6 +48,16 @@ class SortableUtil {
     return new Sortable(el, { ...unSortOptions, ...options })
   }
 
+  /**swap */
+  static SwapSortable(el: HTMLElement, options?: IOption) {
+    return new Sortable(el, {
+      swap: true, // Enable swap plugin
+      swapClass: 'highlight', // The class applied to the hovered swap item
+      animation: 150,
+      ...options
+    })
+  }
+
   /**handle */
   static HandleSortable(el: HTMLElement, options?: IOption) {
     return new Sortable(el, {

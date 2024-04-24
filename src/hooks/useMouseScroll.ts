@@ -1,4 +1,3 @@
-
 export default (element: HTMLElement) => {
   function handleScroll(event: WheelEvent) {
     element.scrollBy({
